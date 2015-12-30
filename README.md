@@ -1,14 +1,11 @@
-not(a) = nand(a, a) = aa
-and(a, b) = nand(nand(a, b), nand(a, b)) = (ab)(ab)
-or(a, b) = nand(nand(a, a), nand(b, b)) = (aa)(bb)
-nor(a, b) = nand(nand(nand(a, a), nand(b, b)), nand(a, a), nand(b, b)) = ((aa)(bb))((aa)(bb))
-xor(a, b) = nand(nand(a, nand(a, b)), nand(b, nand(a, b))) = (a(ab))(b(ab))
-xnor(a, b) = nand(nand(nand(a, nand(a, b)), nand(b, nand(a, b))), nand(nand(a, nand(a, b)), nand(b, nand(a, b)))) = ((a(ab))(b(ab)))(a(ab)(b(ab)))
+# NAND
+NAND is a simple DSL I made as a proof of concept to myself.
+The language that only supports assignments and NAND operations.
+If you find it interesting, go ahead and do the following to get started.
+```
+    git clone https://github.com/MichaelSnowden/nand
+    cd nand
+    mvn generate-sources
+```
 
-
-not: (aa)
-and: ((ab)(ab))
-or: ((aa)(bb))
-nor: (((aa)(bb))((aa)(bb)))
-xor: ((a(ab))(b(ab)))
-xnor: (((a(ab))(b(ab)))(a(ab)(b(ab))))
+After doing that, run the REPL class to be presented with a simple read-eval-print-loop.
