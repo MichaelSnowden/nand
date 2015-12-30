@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class REPL {
     public static void main(String[] args) throws IOException {
-        System.out.println("Type help if you haven't been here before");
+        System.out.println("Type help if you haven't been here before ");
         ExpressionFactory factory = new ExpressionFactory();
         Map<Character, Boolean> map = new HashMap<>();
         NandBaseListener listener = new NandBaseListener() {
