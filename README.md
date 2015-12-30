@@ -6,6 +6,8 @@ If you find it interesting, go ahead and do the following to get started.
 git clone https://github.com/MichaelSnowden/nand
 cd nand
 mvn generate-sources
+mvn clean compile assembly:single
+java -jar target/nand.jar
 ```
 
 After doing that, run the REPL class to be presented with a simple read-eval-print-loop.
