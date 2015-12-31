@@ -1,2 +1,2 @@
 Type help if you haven't been here before
-Type q to quit
+Type quit to quit
