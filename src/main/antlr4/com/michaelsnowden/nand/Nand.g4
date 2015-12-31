@@ -1,14 +1,11 @@
 grammar Nand;
 
 prog: op EOF;
-line: quit | eval | assignment | functionInvocation;
+line: quit | eval | assignment;
 eval: op;
-assignment: lhs=Character WhiteSpace? '=' WhiteSpace? rhs=op;
-functionDeclaration: name=Character+ WhiteSpace? '=>' WhiteSpace? body=op;
-functionInvocation: name=Character+ '(' argument (WhiteSpace argument)* ')';
-argument: Character WhiteSpace? ':' WhiteSpace? op;
-op: '(' left=op (right=op)? ')' | Bool | Character;
+assignment: lhs=String WhiteSpace? '=' WhiteSpace? rhs=op;
+op: '(' left=op (WhiteSpace right=op)? ')' | Bool | String;
 Bool: '0' | '1';
-Character: 'a'..'z';
+String: ('a'..'z' | 'A'..'Z')+;
 WhiteSpace: ' '+;
 quit: 'quit';

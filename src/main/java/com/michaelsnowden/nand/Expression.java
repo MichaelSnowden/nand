@@ -6,5 +6,5 @@ import java.util.Map;
  * @author michael.snowden
  */
 interface Expression {
-    Boolean evaluate(Map<Character, Boolean> map);
+    Boolean evaluate(Map<String, Expression> map);
 }

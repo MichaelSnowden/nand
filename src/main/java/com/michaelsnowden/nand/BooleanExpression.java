@@ -13,7 +13,7 @@ class BooleanExpression implements Expression {
     }
 
     @Override
-    public Boolean evaluate(Map<Character, Boolean> map) {
+    public Boolean evaluate(Map<String, Expression> map) {
         return bool;
     }
 }

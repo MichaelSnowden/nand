@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class NANDRuntime {
     private final RuntimeDelegate delegate;
-    private Map<Character, Boolean> map;
+    private Map<String, Expression> map;
     private ExpressionFactory expressionFactory;
     NandBaseListener listener;
 
@@ -37,14 +37,12 @@ public class NANDRuntime {
             @Override
             public void exitAssignment(NandParser.AssignmentContext ctx) {
                 super.exitAssignment(ctx);
-                boolean value = expressionFactory.createExpression(ctx.rhs).evaluate(map);
-                char c = ctx.lhs.getText().charAt(0);
-                map.put(c, value);
-                delegate.handleAssignment(c, value);
+                Expression expression = expressionFactory.createExpression(ctx.rhs);
+                String c = ctx.lhs.getText();
+                map.put(c, expression);
+                delegate.handleAssignment(c);
                 delegate.doNext(runtime);
             }
-
-
         };
         this.delegate.doNext(this);
     }

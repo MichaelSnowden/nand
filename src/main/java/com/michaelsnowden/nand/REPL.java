@@ -38,8 +38,8 @@ public class REPL {
             }
 
             @Override
-            public void handleAssignment(Character variable, Boolean value) {
-                System.out.println(variable + " = " + value);
+            public void handleAssignment(String variable) {
+                // Intentionally blank
             }
         });
     }

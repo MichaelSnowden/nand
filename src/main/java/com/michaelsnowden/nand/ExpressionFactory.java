@@ -14,8 +14,8 @@ class ExpressionFactory {
         if (ctx.Bool() != null) {
             return new BooleanExpression(Boolean.parseBoolean(ctx.Bool().getText()));
         }
-        if (ctx.Character() != null) {
-            return new VariableExpression(ctx.Character().getText().charAt(0));
+        if (ctx.String() != null) {
+            return new BoundExpression(ctx.String().getText());
         }
         if (ctx.right == null) {
             return createExpression(ctx.left);
@@ -23,7 +23,7 @@ class ExpressionFactory {
         return new NandExpression(createExpression(ctx.left), createExpression(ctx.right));
     }
 
-    Expression getExpression(InputStream inputStream) throws IOException {
+    public Expression createExpression(InputStream inputStream) throws IOException {
         NandLexer lexer = new NandLexer(new ANTLRInputStream(inputStream));
         NandParser parser = new NandParser(new CommonTokenStream(lexer));
         final Expression[] expressions = new Expression[1];

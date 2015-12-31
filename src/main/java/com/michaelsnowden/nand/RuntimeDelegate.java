@@ -8,5 +8,5 @@ public interface RuntimeDelegate {
     void handleOutput(String output);
     void handleQuit();
     void doNext(NANDRuntime runtime);
-    void handleAssignment(Character variable, Boolean value);
+    void handleAssignment(String variable);
 }
