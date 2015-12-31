@@ -12,7 +12,7 @@ import java.io.InputStream;
 class ExpressionFactory {
     public Expression createExpression(NandParser.OpContext ctx) {
         if (ctx.Bool() != null) {
-            return new BooleanExpression(Boolean.parseBoolean(ctx.Bool().getText()));
+            return new BooleanExpression(ctx.Bool().getText().equals("1"));
         }
         if (ctx.String() != null) {
             return new BoundExpression(ctx.String().getText());

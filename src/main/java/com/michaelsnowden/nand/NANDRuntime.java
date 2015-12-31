@@ -30,7 +30,7 @@ public class NANDRuntime {
             public void exitEval(NandParser.EvalContext ctx) {
                 super.exitEval(ctx);
                 Expression expression = expressionFactory.createExpression(ctx.op());
-                delegate.handleOutput(expression.evaluate(map).toString());
+                delegate.handleOutput(expression.evaluate(map) ? "1" : "0");
                 delegate.doNext(runtime);
             }
 
