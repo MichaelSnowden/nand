@@ -7,6 +7,10 @@ import java.util.Map;
  */
 abstract class Expression {
     public abstract Boolean evaluate(Map<String, Expression> map);
+
     public abstract String toString(Map<String, Expression> map);
+
     public abstract String toStringWithLabels(Map<String, Expression> map);
+
+    public abstract void putDependencies(Map<String, Expression> map, Map<String, Integer> dependencies);
 }

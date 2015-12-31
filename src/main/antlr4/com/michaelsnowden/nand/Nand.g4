@@ -1,12 +1,14 @@
 grammar Nand;
 
-line: printWithLabels | print | quit | eval | assignment;
-printWithLabels: 'print' WhiteSpace op WhiteSpace 'with' WhiteSpace 'labels';
-print: 'print' WhiteSpace op;
-quit: 'quit';
+line: WhiteSpace? (printDependencies | printWithLabels | print | help | quit | eval | assignment) WhiteSpace?;
+help: 'help';
+printDependencies: 'graph' WhiteSpace op;
+printWithLabels: 'recursive meta' WhiteSpace op;
+print: 'meta' WhiteSpace op;
+quit: 'quit' | 'exit';
 eval: op;
 assignment: lhs=String WhiteSpace? '=' WhiteSpace? rhs=op;
 op: '(' left=op (WhiteSpace right=op)? ')' | Bool | String;
 Bool: '0' | '1';
 String: ('a'..'z' | 'A'..'Z')+;
-WhiteSpace: ' '+;
+WhiteSpace: (' ' | '\t')+;

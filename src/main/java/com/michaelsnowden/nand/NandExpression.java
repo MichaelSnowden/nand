@@ -26,6 +26,12 @@ class NandExpression extends Expression {
 
     @Override
     public String toStringWithLabels(Map<String, Expression> map) {
-        return toString(map);
+        return "(" + left.toStringWithLabels(map) + " " + right.toStringWithLabels(map) + ")";
+    }
+
+    @Override
+    public void putDependencies(Map<String, Expression> map, Map<String, Integer> dependencies) {
+        left.putDependencies(map, dependencies);
+        right.putDependencies(map, dependencies);
     }
 }

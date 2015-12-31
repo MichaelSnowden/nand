@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,6 +63,24 @@ public class NANDRuntime {
                 super.exitPrintWithLabels(ctx);
                 Expression expression = expressionFactory.createExpression(ctx.op());
                 delegate.handleOutput(expression.toStringWithLabels(map));
+                delegate.doNext(runtime);
+            }
+
+            @Override
+            public void exitHelp(NandParser.HelpContext ctx) {
+                super.exitHelp(ctx);
+                delegate.handleOutput(Utils.convertStreamToString(getClass().getClassLoader()
+                        .getResourceAsStream("help.txt")));
+                delegate.doNext(runtime);
+            }
+
+            @Override
+            public void exitPrintDependencies(NandParser.PrintDependenciesContext ctx) {
+                super.exitPrintDependencies(ctx);
+                Expression expression = expressionFactory.createExpression(ctx.op());
+                Map<String, Integer> dependencies = new HashMap<>();
+                expression.putDependencies(map, dependencies);
+                delegate.handleOutput(Arrays.toString(dependencies.entrySet().toArray()));
                 delegate.doNext(runtime);
             }
         };

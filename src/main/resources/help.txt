@@ -2,10 +2,10 @@ Welcome to NAND!
 NAND is a really simple DSL where you can only assign variables and NAND things
 NAND expressions follow a very simple syntax
 <line> = <exp> | <binding>
-<exp> = '(' <exp> (<ws> <exp>)? ')' | <bool> | <character>
-<binding> = <character> <ws> '=' <ws> (<character> | <bool>)
+<exp> = '(' <exp> (<ws> <exp>)? ')' | <bool> | <string>
+<binding> = <string> <ws> '=' <ws> (<string> | <bool>)
 <bool> = '0' | '1'
-<character> = 'a' | 'b' | .. | 'z'
+<string> = ('a' | 'b' | .. | 'z')+
 <ws> = ' '+
 The semantics are also simple.
 If an expression (exp) is encountered, evaluate it and print the result
@@ -31,5 +31,4 @@ After binding something, you can use it in your expressions
     nand> a = 1
     nand> not
     0
-Variables can only be a single character.
 Have fun!

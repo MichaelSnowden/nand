@@ -24,6 +24,13 @@ class BoundExpression extends Expression {
 
     @Override
     public String toStringWithLabels(Map<String, Expression> map) {
-        return symbol + "(" + toString(map) + ")";
+        return symbol + "(" + map.get(symbol).toStringWithLabels(map) + ")";
+    }
+
+    @Override
+    public void putDependencies(Map<String, Expression> map, Map<String, Integer> dependencies) {
+        Integer oldValue = dependencies.getOrDefault(symbol, 0);
+        dependencies.put(symbol, oldValue + 1);
+        map.get(symbol).putDependencies(map, dependencies);
     }
 }

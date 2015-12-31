@@ -12,7 +12,7 @@ public class REPL {
         new NANDRuntime(new RuntimeDelegate() {
             @Override
             public void init() {
-                System.out.println(StreamUtils.convertStreamToString(getClass().getClassLoader().getResourceAsStream("open.txt")));
+                System.out.println(Utils.convertStreamToString(getClass().getClassLoader().getResourceAsStream("open.txt")));
             }
 
             @Override

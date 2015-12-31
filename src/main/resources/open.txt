@@ -1,2 +1,2 @@
-Type help if you haven't been here before
-Type quit to quit
+Type 'help' if you haven't been here before
+Type 'exit' or 'quit' to quit

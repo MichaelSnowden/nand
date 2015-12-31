@@ -26,4 +26,8 @@ class BooleanExpression extends Expression {
     public String toStringWithLabels(Map<String, Expression> map) {
         return toString(map);
     }
+
+    @Override
+    public void putDependencies(Map<String, Expression> map, Map<String, Integer> dependencies) {
+    }
 }
