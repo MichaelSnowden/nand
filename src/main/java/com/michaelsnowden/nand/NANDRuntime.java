@@ -53,7 +53,8 @@ public class NANDRuntime {
             public void exitPrint(NandParser.PrintContext ctx) {
                 super.exitPrint(ctx);
                 Expression expression = expressionFactory.createExpression(ctx.op());
-                delegate.handleOutput(expression.toString());
+                delegate.handleOutput(expression.toString(map));
+                delegate.doNext(runtime);
             }
         };
         this.delegate.doNext(this);
