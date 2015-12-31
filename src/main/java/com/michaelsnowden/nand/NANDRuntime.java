@@ -56,6 +56,14 @@ public class NANDRuntime {
                 delegate.handleOutput(expression.toString(map));
                 delegate.doNext(runtime);
             }
+
+            @Override
+            public void exitPrintWithLabels(NandParser.PrintWithLabelsContext ctx) {
+                super.exitPrintWithLabels(ctx);
+                Expression expression = expressionFactory.createExpression(ctx.op());
+                delegate.handleOutput(expression.toStringWithLabels(map));
+                delegate.doNext(runtime);
+            }
         };
         this.delegate.doNext(this);
     }

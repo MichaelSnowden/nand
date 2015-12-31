@@ -21,4 +21,9 @@ class BooleanExpression extends Expression {
     public String toString(Map<String, Expression> map) {
         return bool ? "1" : "0";
     }
+
+    @Override
+    public String toStringWithLabels(Map<String, Expression> map) {
+        return toString(map);
+    }
 }

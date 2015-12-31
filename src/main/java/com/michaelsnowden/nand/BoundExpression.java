@@ -21,4 +21,9 @@ class BoundExpression extends Expression {
     public String toString(Map<String, Expression> map) {
         return map.get(symbol).toString(map);
     }
+
+    @Override
+    public String toStringWithLabels(Map<String, Expression> map) {
+        return symbol + "(" + toString(map) + ")";
+    }
 }

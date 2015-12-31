@@ -1,6 +1,7 @@
 grammar Nand;
 
-line: print | quit | eval | assignment;
+line: printWithLabels | print | quit | eval | assignment;
+printWithLabels: 'print' WhiteSpace op WhiteSpace 'with' WhiteSpace 'labels';
 print: 'print' WhiteSpace op;
 quit: 'quit';
 eval: op;
