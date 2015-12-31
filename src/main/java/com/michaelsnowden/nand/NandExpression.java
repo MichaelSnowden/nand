@@ -23,4 +23,9 @@ class NandExpression extends Expression {
     public String toString(Map<String, Expression> map) {
         return "(" + left.toString(map) + " " + right.toString(map) + ")";
     }
+
+    @Override
+    public String toStringWithLabels(Map<String, Expression> map) {
+        return toString(map);
+    }
 }
