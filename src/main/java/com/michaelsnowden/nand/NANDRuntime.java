@@ -47,7 +47,6 @@ public class NANDRuntime {
             @Override
             public void exitQuit(NandParser.QuitContext ctx) {
                 super.exitQuit(ctx);
-                delegate.handleQuit();
             }
         };
         this.delegate.doNext(this);
