@@ -7,5 +7,5 @@ import java.util.Map;
  */
 abstract class Expression {
     public abstract Boolean evaluate(Map<String, Expression> map);
-    public abstract String toString();
+    public abstract String toString(Map<String, Expression> map);
 }

@@ -18,7 +18,7 @@ class BooleanExpression extends Expression {
     }
 
     @Override
-    public String toString() {
+    public String toString(Map<String, Expression> map) {
         return String.valueOf(bool);
     }
 }

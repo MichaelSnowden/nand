@@ -18,7 +18,7 @@ class BoundExpression extends Expression {
     }
 
     @Override
-    public String toString() {
-        return symbol;
+    public String toString(Map<String, Expression> map) {
+        return map.get(symbol).toString(map);
     }
 }

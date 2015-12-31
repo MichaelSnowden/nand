@@ -48,6 +48,13 @@ public class NANDRuntime {
             public void exitQuit(NandParser.QuitContext ctx) {
                 super.exitQuit(ctx);
             }
+
+            @Override
+            public void exitPrint(NandParser.PrintContext ctx) {
+                super.exitPrint(ctx);
+                Expression expression = expressionFactory.createExpression(ctx.op());
+                delegate.handleOutput(expression.toString());
+            }
         };
         this.delegate.doNext(this);
     }
