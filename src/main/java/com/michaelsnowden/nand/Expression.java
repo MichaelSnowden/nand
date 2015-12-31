@@ -5,6 +5,7 @@ import java.util.Map;
 /**
  * @author michael.snowden
  */
-interface Expression {
-    Boolean evaluate(Map<String, Expression> map);
+abstract class Expression {
+    public abstract Boolean evaluate(Map<String, Expression> map);
+    public abstract String toString();
 }

@@ -1,7 +1,7 @@
 grammar Nand;
 
-prog: op EOF;
-line: quit | eval | assignment;
+line: print | quit | eval | assignment;
+print: 'print' WhiteSpace op;
 quit: 'quit';
 eval: op;
 assignment: lhs=String WhiteSpace? '=' WhiteSpace? rhs=op;

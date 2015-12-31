@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author michael.snowden
  */
-class BoundExpression implements Expression {
+class BoundExpression extends Expression {
     private String symbol;
 
     public BoundExpression(String variable) {
@@ -15,5 +15,10 @@ class BoundExpression implements Expression {
     @Override
     public Boolean evaluate(Map<String, Expression> map) {
         return map.get(symbol).evaluate(map);
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
     }
 }

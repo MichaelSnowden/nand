@@ -29,11 +29,11 @@ class ExpressionFactory {
         final Expression[] expressions = new Expression[1];
         parser.addParseListener(new NandBaseListener() {
             @Override
-            public void exitProg(NandParser.ProgContext ctx) {
+            public void exitEval(NandParser.EvalContext ctx) {
                 expressions[0] = createExpression(ctx.op());
             }
         });
-        parser.prog();
+        parser.line();
 
         return expressions[0];
     }
