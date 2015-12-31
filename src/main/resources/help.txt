@@ -1,0 +1,28 @@
+Welcome to NAND!
+NAND is a really simple DSL where you can only assign variables and NAND things
+NAND expressions follow a very simple syntax
+<line> = <exp> | <assignment>
+<exp> = '(' <exp> <exp>? ')' | <bool> | <character>
+<assignment> = <character> <ws> '=' <ws> (<character> | <bool>)
+<bool> = 0 | 1
+<character> = 'a' | 'b' | .. | 'z'
+<ws> = ' '+
+The semantics are also simple.
+If an expression (exp) is encountered, evaluate it and print the result
+If an assignment is encountered, assign that variable
+So, enter an expression or an assignment
+An expression could be something like the following
+    0
+    1
+    (0)
+    (1)
+    (01
+    (0(11))
+An assignment looks something like this
+    a = 0
+    b = 1
+After assigning variables, you can use them in your expressions
+    (aa)
+    (a(ba))
+Variables can only be a single character.
+Have fun!

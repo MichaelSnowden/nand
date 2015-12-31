@@ -1,10 +1,8 @@
 package com.michaelsnowden.nand;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 public class LogicTest {
     @Test
     public void testNot() throws Exception {
-        Expression expression = getExpression("not.nand");
+        Expression expression = new ExpressionFactory().getExpression(getFile("not.nand"));
         Map<Character, Boolean> map = new HashMap<>();
 
         boolean evaluate;
@@ -30,7 +28,7 @@ public class LogicTest {
 
     @Test
     public void testAnd() throws Exception {
-        Expression expression = getExpression("and.nand");
+        Expression expression = new ExpressionFactory().getExpression(getFile("and.nand"));
         Map<Character, Boolean> map = new HashMap<>();
 
         boolean evaluate;
@@ -57,7 +55,7 @@ public class LogicTest {
 
     @Test
     public void testOr() throws Exception {
-        Expression expression = getExpression("or.nand");
+        Expression expression = new ExpressionFactory().getExpression(getFile("or.nand"));
         Map<Character, Boolean> map = new HashMap<>();
 
         boolean evaluate;
@@ -84,7 +82,7 @@ public class LogicTest {
 
     @Test
     public void testNor() throws Exception {
-        Expression expression = getExpression("nor.nand");
+        Expression expression = new ExpressionFactory().getExpression(getFile("nor.nand"));
         Map<Character, Boolean> map = new HashMap<>();
 
         boolean evaluate;
@@ -111,7 +109,7 @@ public class LogicTest {
 
     @Test
     public void testXor() throws Exception {
-        Expression expression = getExpression("xor.nand");
+        Expression expression = new ExpressionFactory().getExpression(getFile("xor.nand"));
         Map<Character, Boolean> map = new HashMap<>();
 
         boolean evaluate;
@@ -138,7 +136,7 @@ public class LogicTest {
 
     @Test
     public void testXnor() throws Exception {
-        Expression expression = getExpression("xnor.nand");
+        Expression expression = new ExpressionFactory().getExpression(getFile("xnor.nand"));
         Map<Character, Boolean> map = new HashMap<>();
 
         boolean evaluate;
@@ -163,20 +161,7 @@ public class LogicTest {
         assertEquals(evaluate, true);
     }
 
-    private Expression getExpression(String file) throws IOException {
-        NandLexer lexer = new NandLexer(new ANTLRInputStream(getClass().getClassLoader().getResourceAsStream(file)));
-        NandParser parser = new NandParser(new CommonTokenStream(lexer));
-        ExpressionFactory factory = new ExpressionFactory();
-        final Expression[] expressions = new Expression[1];
-        parser.addParseListener(new NandBaseListener() {
-            @Override
-            public void exitProg(NandParser.ProgContext ctx) {
-                super.exitProg(ctx);
-                expressions[0] = factory.createExpression(ctx.op());
-            }
-        });
-        parser.prog();
-
-        return expressions[0];
+    private InputStream getFile(String file) {
+        return getClass().getClassLoader().getResourceAsStream(file);
     }
 }
