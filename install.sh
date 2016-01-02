@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 git clone https://github.com/MichaelSnowden/nand
 cd nand
 mvn generate-sources
