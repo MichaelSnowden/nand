@@ -1,7 +1,8 @@
 # NAND
 NAND is a simple DSL I made as a proof of concept to myself.
 The language only supports assignments and NAND operations.
-If you find it interesting, you can just use the install script (this will add a shortcut to /usr/bin)
+If you find it interesting, you can just use the install script (this will add a shortcut to /usr/bin).
+You'll need Maven installed.
 
 ```
 curl -s https://raw.githubusercontent.com/MichaelSnowden/nand/master/install.sh | sh
