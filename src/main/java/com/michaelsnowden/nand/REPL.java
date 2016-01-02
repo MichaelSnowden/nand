@@ -3,12 +3,15 @@ package com.michaelsnowden.nand;
 import java.io.IOException;
 import java.util.Scanner;
 
+import jline.console.ConsoleReader;
+
 /**
  * @author michael.snowden
  */
 public class REPL {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+        ConsoleReader console = new ConsoleReader();
+        console.setPrompt("nand> ");
         new NANDRuntime(new RuntimeDelegate() {
             @Override
             public void init() {
@@ -27,10 +30,10 @@ public class REPL {
 
             @Override
             public void doNext(NANDRuntime runtime) {
-                System.out.print("nand> ");
                 try {
-                    if (scanner.hasNextLine()) {
-                        runtime.processLine(scanner.nextLine());
+                    String line = null;
+                    if ((line = console.readLine()) != null) {
+                        runtime.processLine(line);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
