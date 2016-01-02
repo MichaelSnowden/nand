@@ -115,5 +115,10 @@
             <artifactId>heroku-jdbc</artifactId>
             <version>0.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>2.12</version>
+        </dependency>
     </dependencies>
 </project>
