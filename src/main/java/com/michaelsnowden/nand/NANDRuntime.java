@@ -79,10 +79,7 @@ public class NANDRuntime {
                 delegate.doNext(runtime);
             }
         };
-        
-        while (true) {
-            this.delegate.doNext(this);
-        }
+        this.delegate.start(this);
     }
 
     public void processLine(String line) throws IOException {

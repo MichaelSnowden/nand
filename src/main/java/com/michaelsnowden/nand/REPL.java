@@ -19,6 +19,13 @@ public class REPL {
             }
 
             @Override
+            public void start(NANDRuntime runtime) {
+                while (true) {
+                    doNext(runtime);
+                }
+            }
+
+            @Override
             public void handleOutput(String output) {
                 System.out.println(output);
             }
