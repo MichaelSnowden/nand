@@ -5,6 +5,7 @@ package com.michaelsnowden.nand;
  */
 public interface RuntimeDelegate {
     void init();
+    void start(NANDRuntime runtime);
     void handleOutput(String output);
     void handleQuit();
     void doNext(NANDRuntime runtime);
