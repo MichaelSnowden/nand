@@ -12,15 +12,6 @@ public class REPL {
     public static void main(String[] args) throws IOException {
         ConsoleReader console = new ConsoleReader();
         console.setPrompt("nand> ");
-        try {
-            while(true){
-            String line = null;
-            if ((line = console.readLine()) != null) {
-                System.out.println(line);            }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         new NANDRuntime(new RuntimeDelegate() {
             @Override
             public void init() {
@@ -40,8 +31,10 @@ public class REPL {
             @Override
             public void doNext(NANDRuntime runtime) {
                 try {
-                    String line = null;
-                    if ((line = console.readLine()) != null) {
+                    String line = console.readLine();
+                    if (line == null) {
+                        System.exit(0);
+                    } else {
                         runtime.processLine(line);
                     }
                 } catch (IOException e) {
