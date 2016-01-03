@@ -32,7 +32,6 @@ public class NANDRuntime {
                 super.exitEval(ctx);
                 Expression expression = expressionFactory.createExpression(ctx.op());
                 delegate.handleOutput(expression.evaluate(map) ? "1" : "0");
-                delegate.doNext(runtime);
             }
 
             @Override
@@ -42,7 +41,6 @@ public class NANDRuntime {
                 String c = ctx.lhs.getText();
                 map.put(c, expression);
                 delegate.handleAssignment(c);
-                delegate.doNext(runtime);
             }
 
             @Override
@@ -55,7 +53,6 @@ public class NANDRuntime {
                 super.exitPrint(ctx);
                 Expression expression = expressionFactory.createExpression(ctx.op());
                 delegate.handleOutput(expression.toString(map));
-                delegate.doNext(runtime);
             }
 
             @Override
@@ -63,7 +60,6 @@ public class NANDRuntime {
                 super.exitPrintWithLabels(ctx);
                 Expression expression = expressionFactory.createExpression(ctx.op());
                 delegate.handleOutput(expression.toStringWithLabels(map));
-                delegate.doNext(runtime);
             }
 
             @Override
@@ -71,7 +67,6 @@ public class NANDRuntime {
                 super.exitHelp(ctx);
                 delegate.handleOutput(Utils.convertStreamToString(getClass().getClassLoader()
                         .getResourceAsStream("help.txt")));
-                delegate.doNext(runtime);
             }
 
             @Override
@@ -84,7 +79,10 @@ public class NANDRuntime {
                 delegate.doNext(runtime);
             }
         };
-        this.delegate.doNext(this);
+        
+        while (true) {
+            this.delegate.doNext(this);
+        }
     }
 
     public void processLine(String line) throws IOException {
