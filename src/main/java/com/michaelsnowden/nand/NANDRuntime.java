@@ -21,6 +21,7 @@ public class NANDRuntime {
 
     public NANDRuntime(RuntimeDelegate delegate) {
         this.delegate = delegate;
+        this.delegate.init();
         Runtime.getRuntime().addShutdownHook(new Thread(delegate::handleQuit));
         map = new HashMap<>();
         expressionFactory = new ExpressionFactory();
@@ -83,8 +84,7 @@ public class NANDRuntime {
                 delegate.doNext(runtime);
             }
         };
-        this.delegate.init(this);
-        this.delegate.doNext(this);
+        this.delegate.start(this);
     }
 
     public void processLine(String line) throws IOException {
